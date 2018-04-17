@@ -1,0 +1,24 @@
+{
+  "name": "codelab-level-three",
+  "description": "Actions on Google Codelab Level 3",
+  "author": "Google Inc",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.0.0",
+    "firebase-admin": "~5.8.1",
+    "firebase-functions": "^0.8.1",
+    "i18n": "^0.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
