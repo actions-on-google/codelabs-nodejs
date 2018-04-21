@@ -1,6 +1,6 @@
 {
-  "name": "codelab-level-two",
-  "description": "Actions on Google Codelab Level 2",
+  "name": "codelab-level-one",
+  "description": "Actions on Google Codelab Level 1",
   "author": "Google Inc",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "actions-on-google": "^2.0.0",
-    "firebase-admin": "~5.8.1",
-    "firebase-functions": "^0.8.1"
+    "firebase-admin": "^5.12.0",
+    "firebase-functions": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^4.19.0",
