@@ -1,7 +1,24 @@
 {
-  "Hi there, to get to know you better": "Or ei vouis, to get to know you better",
-  "That's not nice. What's your favorite color?": "Oi Oi, That's not nice. What's your favorite color?",
-  "Here's the color": "French. Here's the color",
-  "Thanks, {{name}}. What's your favorite color?": "French Thanks, {{name}}. What's your favorite color?",
-  "Hi again {{name}}. What was your favorite color again?": "Hi again {{name}}. What was your favorite color again?"
+  "Hi there, to get to know you better": "Hi there, to get to know you better",
+  "That's not nice. What's your favorite color?": "That's not nice. What's your favorite color?",
+  "Here's the color": "Here's the color",
+  "Thanks, {{name}}. What's your favorite color?": "Thanks, {{name}}. What's your favorite color?",
+  "Hi again {{name}}. What was your favorite color again?": "Hi again {{name}}. What was your favorite color again?",
+  "Pink Unicorn",
+  "Pink Unicorn Color": "Pink Unicorn Color",
+  "Indigo Taco",
+  "Indigo Taco Color": "Indigo Taco Color",
+  "Blue Grey Coffee": "Blue Grey Coffee",
+  "Blue Grey Coffee Color": "Blue Grey Coffee Color",
+  "<speak>{{userName}}, your lucky number is {{luckyNumber}}<audio src='{{audioSound}}'></audio>. Would you like to hear some fake colors?</speak>": "<speak>{{userName}}, your lucky number is {{luckyNumber}}<audio src='{{audioSound}}'></audio>. Would you like to hear some fake colors?</speak>",
+  "Which color, indigo taco, pink unicorn or blue grey coffee?": "Which color, indigo taco, pink unicorn or blue grey coffee?",
+  "That reminds me of a song": "That reminds me of a song",
+  "It was fun chatting with you. Until next time.": "It was fun chatting with you. Until next time.",
+  "You did not select an option": "You did not select an option",
+  "You selected {{option}}": "You selected {{option}}",
+  "It was fun chatting with you. Until next time.": "It was fun chatting with you. Until next time.",
+  "What was that? I was hoping for a color.": "What was that? I was hoping for a color.",
+  "Last chance. I'm just asking for a color. Please.": "Last chance. I'm just asking for a color. Please.",
+  "Okay let's try this again later.": "Okay let's try this again later."
 }
+
