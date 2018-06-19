@@ -87,11 +87,11 @@ app.intent('favorite color', (conv, {color}) => {
     // If we collected user name previously, address them by name and use SSML
     // to embed an audio snippet in the response.
     conv.ask(`<speak>${conv.data.userName}, your lucky number is ` +
-      `${luckyNumber}<audio src="${audioSound}"></audio>.` +
+      `${luckyNumber}.<audio src="${audioSound}"></audio>` +
       `Would you like to hear some fake colors?</speak>`);
   } else {
-    conv.ask(`<speak>Your lucky number is ${luckyNumber}` +
-      `<audio src="${audioSound}"></audio>.` +
+    conv.ask(`<speak>Your lucky number is ${luckyNumber}.` +
+      `<audio src="${audioSound}"></audio>` +
       `Would you like to hear some fake colors?</speak>`);
   }
 });
