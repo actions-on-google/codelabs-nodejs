@@ -84,7 +84,7 @@ const colorMap = {
   }),
 };
 
-// In the case the user is interacting with the conversation on a screened device
+// In the case the user is interacting with the Action on a screened device
 // The Fake Color Carousel will display a carousel of color cards
 const fakeColorCarousel = () => {
   const carousel = new Carousel({
@@ -163,23 +163,23 @@ app.intent('favorite color', (conv, {color}) => {
   if (conv.user.storage.userName) {
     // If we collected user name previously, address them by name and use SSML
     // to embed an audio snippet in the response.
-    const { userName } = conv.user.storage;
+    const {userName} = conv.user.storage;
     const message = localize(`<speak>{{userName}}, your lucky number is ` +
-      `{{luckyNumber}}<audio src='{{audioSound}}'></audio>.` +
+      `{{luckyNumber}}.<audio src='{{audioSound}}'></audio> ` +
       `Would you like to hear some fake colors?</speak>`,
       {userName, luckyNumber, audioSound}
     );
     conv.ask(message);
   } else {
-    const message = localize(`<speak>Your lucky number is {{luckyNumber}}` +
-      `<audio src='{{audioSound}}'></audio>.` +
+    const message = localize(`<speak>Your lucky number is {{luckyNumber}}.` +
+      `<audio src='{{audioSound}}'></audio> ` +
       `Would you like to hear some fake colors?</speak>`);
     conv.ask(message);
   }
 });
 
-// Handle the Dialogflow intent named 'Favorite Color Intent'
-app.intent('Favorite Color Intent - yes', (conv) => {
+// Handle the Dialogflow intent named 'favorite color - yes'
+app.intent('favorite color - yes', (conv) => {
   conv.ask(
     localize('Which color, indigo taco, pink unicorn or blue grey coffee?')
   );
