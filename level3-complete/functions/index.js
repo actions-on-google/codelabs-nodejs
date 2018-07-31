@@ -150,15 +150,12 @@ app.intent('favorite fake color', (conv, {fakeColor}) => {
   fakeColor = conv.arguments.get('OPTION') || fakeColor;
   // Present user with the corresponding basic card and end the conversation.
   conv.ask(`Here's the color.`, new BasicCard(colorMap[fakeColor]));
-  let prompt = 'Which color would you like to hear about next?';
+  let prompt = 'Do you want to hear about another fake color?';
   if (!conv.screen) {
     prompt = colorMap[fakeColor].text + ' ' + prompt;
   }
   conv.ask(prompt);
-  const remainingColors = Object.keys(colorMap)
-    .filter((color) => color !== fakeColor)
-    .map((color) => colorMap[color].title);
-  conv.ask(new Suggestions(remainingColors, `I'm done`));
+  conv.ask(new Suggestions('Yes', 'No'));
 });
 
 // Handle the Dialogflow NO_INPUT intent.
@@ -176,7 +173,7 @@ app.intent('actions_intent_NO_INPUT', (conv) => {
 });
 
 // Handle the Dialogflow intent named 'favorite color - yes'
-app.intent('favorite color - yes', (conv) => {
+app.intent(['favorite color - yes', 'favorite fake color - yes'], (conv) => {
   conv.ask('Which color, indigo taco, pink unicorn or blue grey coffee?');
   // If the user is using a screened device, display the carousel
   if (conv.screen) return conv.ask(fakeColorCarousel());
