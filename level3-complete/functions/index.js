@@ -52,8 +52,9 @@ app.middleware((conv) => {
 });
 
 // Define a mapping of fake color strings to basic card objects.
+// Translate strings at runtime based on user's locale.
 const colorMap = () => {
-  const obj = {
+  return {
     'indigo taco': {
       title: i18n.__('Indigo Taco'),
       text: i18n.__('Indigo Taco is a subtle bluish tone.'),
@@ -80,45 +81,40 @@ const colorMap = () => {
         accessibilityText: i18n.__('Blue Grey Coffee Color'),
       },
       display: 'WHITE',
-    }
+    },
   };
-  obj['caffe\' blu grigio'] = obj['blue grey coffee'];
-  obj['pizza indaco'] = obj['indigo taco'];
-  obj['unicorno rosa'] = obj['pink unicorn'];
-  return obj;
 };
 
 // In the case the user is interacting with the Action on a screened device
 // The Fake Color Carousel will display a carousel of color cards
 const fakeColorCarousel = () => {
-  const items = {};
-  items[i18n.__('indigo taco')] = {
-    title: i18n.__('Indigo Taco'),
-    synonyms: [i18n.__('indigo'), i18n.__('taco')],
-    image: new Image({
-      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDN1JRbF9ZMHZsa1k/style-color-uiapplication-palette1.png',
-      alt: i18n.__('Indigo Taco Color'),
-    }),
-  };
-  items[i18n.__('pink unicorn')] = {
-    title: i18n.__('Pink Unicorn'),
-    synonyms: [i18n.__('pink'), i18n.__('unicorn')],
-    image: new Image({
-      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDbFVfTXpoaEE5Vzg/style-color-uiapplication-palette2.png',
-      alt: i18n.__('Pink Unicorn Color'),
-    }),
-  };
-  items[i18n.__('blue grey coffee')] = {
-    title: i18n.__('Blue Grey Coffee'),
-    synonyms: [i18n.__('blue'), i18n.__('grey'), i18n.__('coffee')],
-    image: new Image({
-      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDZUdpeURtaTUwLUk/style-color-colorsystem-gray-secondary-161116.png',
-      alt: i18n.__('Blue Grey Coffee Color'),
-    }),
-  };
   const carousel = new Carousel({
-    items: items
-  });
+    items: {
+      'indigo taco': {
+        title: i18n.__('Indigo Taco'),
+        synonyms: [i18n.__('indigo'), i18n.__('taco')],
+        image: new Image({
+          url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDN1JRbF9ZMHZsa1k/style-color-uiapplication-palette1.png',
+          alt: i18n.__('Indigo Taco Color'),
+        }),
+      },
+      'pink unicorn': {
+        title: i18n.__('Pink Unicorn'),
+        synonyms: [i18n.__('pink'), i18n.__('unicorn')],
+        image: new Image({
+          url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDbFVfTXpoaEE5Vzg/style-color-uiapplication-palette2.png',
+          alt: i18n.__('Pink Unicorn Color'),
+        }),
+      },
+      'blue grey coffee': {
+        title: i18n.__('Blue Grey Coffee'),
+        synonyms: [i18n.__('blue'), i18n.__('grey'), i18n.__('coffee')],
+        image: new Image({
+          url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDZUdpeURtaTUwLUk/style-color-colorsystem-gray-secondary-161116.png',
+          alt: i18n.__('Blue Grey Coffee Color'),
+        }),
+      },
+  }});
   return carousel;
 };
 
@@ -133,7 +129,7 @@ app.intent('Default Welcome Intent', (conv) => {
     }));
   } else {
     const message = i18n.__(
-      'Hi again {{userName}}. What was your favorite color again?',
+      'Hi again {{userName}}. What was your favorite color?',
       {userName: name});
     return conv.ask(message);
   }
@@ -150,9 +146,8 @@ app.intent('actions_intent_PERMISSION', (conv, params, permissionGranted) => {
     // If the user accepted our request, store their name in
     // the 'conv.user.storage' object for the future conversations.
     conv.user.storage.userName = conv.user.name.display;
-    conv.ask(i18n.__(
-      `Thanks, {{name}}. What's your favorite color?`, {name: conv.user.storage.userName}
-    ));
+    conv.ask(i18n.__(`Thanks, {{name}}. What's your favorite color?`,
+      {name: conv.user.storage.userName}));
     conv.ask(new Suggestions(i18n.__('Blue'), i18n.__('Red'), i18n.__('Green')));
   }
 });
@@ -160,30 +155,28 @@ app.intent('actions_intent_PERMISSION', (conv, params, permissionGranted) => {
 // Handle the Dialogflow intent named 'favorite color'.
 // The intent collects a parameter named 'color'.
 app.intent('favorite color', (conv, {color}) => {
-  let message;
   const luckyNumber = color.length;
   const audioSound = 'https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg';
   if (conv.user.storage.userName) {
     // If we collected user name previously, address them by name and use SSML
     // to embed an audio snippet in the response.
-    const userName = conv.user.storage.userName;
-    message = i18n.__(`<speak>{{name}}, your lucky number is {{number}}<audio src='{{sound}}'>` +
-      `</audio>. Would you like to hear some fake colors?</speak>`,
-      {name: userName, number: luckyNumber, sound: audioSound}
-    );
+    conv.ask(i18n.__(`<speak>{{name}}, your lucky number is {{number}}.` +
+      `<audio src='{{sound}}'></audio> Would you like to hear some fake colors?</speak>`,
+      {name: conv.user.storage.userName, number: luckyNumber, sound: audioSound}
+    ));
+    conv.ask(new Suggestions(i18n.__('Yes'), i18n.__('No')));
   } else {
-    message = i18n.__(`<speak>Your lucky number is {{number}}<audio src='{{sound}}'></audio>. ` +
-      `Would you like to hear some fake colors?</speak>`,
-      {number: luckyNumber, sound: audioSound});
+    conv.ask(i18n.__(`<speak>Your lucky number is {{number}}.<audio src='{{sound}}'></audio>` +
+      ` Would you like to hear some fake colors?</speak>`,
+      {number: luckyNumber, sound: audioSound}
+    ));
   }
-  conv.ask(message);
-  conv.ask(new Suggestions(i18n.__('Yes'), i18n.__('No')));
 });
 
 // Handle the Dialogflow intent named 'favorite fake color'.
 // The intent collects a parameter named 'fakeColor'.
 app.intent('favorite fake color', (conv, {fakeColor}) => {
-  fakeColor = i18n.__(conv.arguments.get('OPTION')) || i18n.__(fakeColor);
+  fakeColor = conv.arguments.get('OPTION') || fakeColor;
   // Present user with the corresponding basic card and end the conversation.
   conv.ask(i18n.__(`Here's the color.`), new BasicCard(colorMap()[fakeColor]));
   let prompt = i18n.__('Do you want to hear about another fake color?');

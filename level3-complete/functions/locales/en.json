@@ -1,16 +1,16 @@
 {
   "Hi there, to get to know you better": "Hi there, to get to know you better",
   "Thanks, {{name}}. What's your favorite color?": "Thanks, {{name}}. What's your favorite color?",
-  "Hi again {{userName}}. What was your favorite color again?": "Hi again {{userName}}. What was your favorite color again?",
+  "Hi again {{userName}}. What was your favorite color?": "Hi again {{userName}}. What was your favorite color again?",
   "Pink Unicorn": "Pink Unicorn",
   "Pink Unicorn Color": "Pink Unicorn Color",
   "Indigo Taco": "Indigo Taco",
   "Indigo Taco Color": "Indigo Taco Color",
   "Blue Grey Coffee": "Blue Grey Coffee",
   "Blue Grey Coffee Color": "Blue Grey Coffee Color",
-  "<speak>{{name}}, your lucky number is {{number}}<audio src='{{sound}}'></audio>. Would you like to hear some fake colors?</speak>": "<speak>{{name}}, your lucky number is {{number}}<audio src='{{sound}}'></audio>. Would you like to hear some fake colors?</speak>",
+  "<speak>{{name}}, your lucky number is {{number}}.<audio src='{{sound}}'></audio> Would you like to hear some fake colors?</speak>": "<speak>{{name}}, your lucky number is {{number}}.<audio src='{{sound}}'></audio> Would you like to hear some fake colors?</speak>",
   "Which color, indigo taco, pink unicorn or blue grey coffee?": "Which color, indigo taco, pink unicorn or blue grey coffee?",
-  "<speak>Your lucky number is {{number}}<audio src='{{sound}}'></audio>. Would you like to hear some fake colors?</speak>": "<speak>Your lucky number is {{number}}<audio src='{{sound}}'></audio>. Would you like to hear some fake colors?</speak>",
+  "<speak>Your lucky number is {{number}}.<audio src='{{sound}}'></audio> Would you like to hear some fake colors?</speak>": "<speak>Your lucky number is {{number}}.<audio src='{{sound}}'></audio> Would you like to hear some fake colors?</speak>",
   "What was that? I was hoping for a color.": "What was that? I was hoping for a color.",
   "Last chance. I'm just asking for a color. Please.": "Last chance. I'm just asking for a color. Please.",
   "Okay let's try this again later.": "Okay let's try this again later.",
@@ -27,5 +27,8 @@
   "grey": "grey",
   "coffee": "coffee",
   "pink": "pink",
-  "unicorn": "unicorn"
+  "unicorn": "unicorn",
+  "indigo taco": "indigo taco",
+  "pink unicorn": "pink unicorn",
+  "blue grey coffee": "blue grey coffee"
 }
