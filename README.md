@@ -4,14 +4,16 @@ These samples serve as the completed source code for
 [Actions on Google codelabs](https://codelabs.developers.google.com/?cat=Assistant).
 The `level1-complete` directory should be used as a reference for the
 Level 1 codelab, and as a starting point for the Level 2 codelab. The
-`level2-complete` directory can be used as a reference for the Level 2 codelab.
+`level2-complete` directory can be used as a reference for the Level 2 
+codelab, and as a starting point for the Level 3 codelab. The 
+`level3-complete` directory can be used as a reference for the Level 3 codelab.
 
 ## Setup Instructions
 
 For detailed instructions on using this code, refer to the
 [Actions on Google codelabs](https://codelabs.developers.google.com/?cat=Assistant),
-Level 1 and 2. Below are steps to deploy the code for either directory
-(i.e. `level1-complete` or `level2-complete`).
+Level 1, 2 and 3. Below are steps to deploy the code for any directory
+(i.e. `level1-complete`, `level2-complete`, or `level3-complete`).
 
 ### Steps
 
