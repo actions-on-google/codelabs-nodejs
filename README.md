@@ -8,6 +8,8 @@ Level 1 codelab, and as a starting point for the Level 2 codelab. The
 codelab, and as a starting point for the Level 3 codelab. The 
 `level3-complete` directory can be used as a reference for the Level 3 codelab.
 
+:warning: These codelab samples were built using Dialogflow. We now recommend using [Actions Builder or the Actions SDK](https://developers.google.com/assistant/conversational/overview) to develop, test, and deploy Conversational Actions.
+
 ## Setup Instructions
 
 For detailed instructions on using this code, refer to the
